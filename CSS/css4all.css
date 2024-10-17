@@ -1,0 +1,3044 @@
+/**--------------------ONEPAGER CODE--------------------------*/
+
+* {
+
+    padding: 0;
+    margin: 0;
+}
+html, body {
+    background-color: white;
+    height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+.pages {
+    /* display: flex; auskommentierte spalte */
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    /* overflow-y: auto;  macht scrollbar für alle seiten */
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.page {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    bottom: -100%;
+    transition: bottom .7s;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.page:first-child {
+    bottom: 0;
+}
+
+.first {
+    background-color: #f8f9f9;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.second {
+    background-color: #f8f9f9;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.third {
+    background-color: #f8f9f9;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.fourth {
+    background-color: #f8f9f9;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.fifth {
+    background-color: #f8f9f9;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.sixth {
+    background-color: #f8f9f9;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.pagination {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.pagination>li {
+    list-style: none;
+    height: 20px;
+    width: 20px;
+    background: #000000;
+    border-radius: 50%;
+    margin-top: 10px;
+    transition: background .7s;
+}
+
+.pagination>li.active {
+    background: gold;
+}
+
+.title {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+/*-------------------BODY HEADER MAIN FOOTER------------------------------------*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica", Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Mindesthöhe des Viewports */
+    background: #FAFAFA;
+
+}
+header {
+    position: fixed;
+    background-color: darkslategrey;
+    height: 65px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0;
+}
+main {
+    flex: 1; /* Nimmt den verfügbaren Platz ein */
+    padding-top: 65px;
+    line-height: 150%;
+    color: #050505;
+    font-size: 20px;
+    width: 100%;
+    background-color: black;
+}
+
+footer {
+    background-color: darkslategrey;
+    height: 125px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    padding-left: 4%;
+    font-size: 0.9em;
+    font-weight: lighter;
+    position: fixed;
+    bottom: 0;
+
+}
+.menu-toggle {
+    display: none;
+}
+.dropdown-menu {
+    display: none;
+}
+
+
+
+.Footer4SocialMedia {
+    position: absolute;
+    right: 10%;
+    top: 5px;
+    display: flex;
+    flex-direction: column; /* Places content in a vertical stack */
+    align-items: flex-end; /* Aligns content to the right */
+    color: white;
+    margin-left: 10px !important;
+}
+
+.Footer4SocialMedia p {
+    margin: 0 0 20px 0; /* Adds spacing below the "Folgen Sie uns" text */
+    font-size: 16px; /* Adjust the font size as needed */
+    margin-right: -30px;
+}
+
+
+.Footer4SocialMedia a {
+    display: flex;
+    align-items: center;
+    color: white; /* Ensures link text is white */
+    text-decoration: none; /* Removes underline */
+}
+
+.Footer4SocialMedia img {
+    margin-right: 10px; /* Adds space between the image and text */
+    margin-left: -15%;
+}
+
+.Footer4SocialMedia a:hover {
+    text-decoration: none; /* No underline on hover */
+}
+
+.Footer4SocialMedia span {
+    font-size: 14px; /* Adjust font size if needed */
+    margin-right: -25px;
+}
+
+.Footer4SocialMediaSmallView {
+    display: none;
+}
+
+.Footer4SocialMediaSmallView p {
+    display: none;
+}
+
+.Footer4SocialMediaSmallView a {
+    display: none;
+}
+
+.Footer4SocialMediaSmallView img {
+    display: none;
+}
+
+.Footer4SocialMediaSmallView a:hover {
+    display: none;}
+
+.Footer4SocialMediaSmallView span {
+    display: none;
+}
+.Footer4SocialMediaSmallViewNoText {
+    display: none;
+}
+
+.Footer4SocialMediaSmallViewNoText p {
+    display: none;
+}
+
+.Footer4SocialMediaSmallViewNoText a {
+    display: none;
+}
+
+.Footer4SocialMediaSmallViewNoText img {
+    display: none;
+}
+
+.Footer4SocialMediaSmallViewNoText a:hover {
+    display: none;
+}
+
+.Footer4SocialMediaSmallViewNoText span {
+    display: none;
+}
+
+/* Modal Style */
+.modal {
+    display: none; /* Standardmäßig nicht sichtbar */
+    position: fixed; /* Bleibt an einer festen Position */
+    z-index: 1; /* Im Vordergrund */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Halbtransparentes Schwarz */
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%;
+    min-width: 100px;
+    max-width: 2000px;
+    height: 800px;
+    overflow-y: auto; /* Scrollbar für vertikales Scrollen */
+
+}
+.modal-content-Datenschutz {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%;
+    min-width: 100px;
+    max-width: 2000px;
+    height: 800px; /* Begrenze die Höhe auf 80% der Höhe des Viewports */
+    overflow-y: auto; /* Scrollbar für vertikales Scrollen */
+}
+/*SCHLIESSFUNKTION FÜR ALLE MODAL VIEWS*/
+/*Für Modal in Projekte*/
+.FooterModalTitle {
+    font-size: x-large;
+}
+.FooterModalSubtitle{
+    font-size: larger;
+}
+.FooterModalText {
+    font-size: large;
+}
+/*Modal für Projekt 1*/
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*Modal für Projekt 2*/
+.close2 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close2:hover,
+.close2:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*Modal für Projekt 3*/
+.close3 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close3:hover,
+.close3:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*Modal für Projekt 4*/
+.close4 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close4:hover,
+.close4:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*Modal für Projekt 5*/
+.close5 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close5:hover,
+.close5:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*Modal für Projekt 6*/
+.close6 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close6:hover,
+.close6:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/*Für Modal im Footer*/
+.ModalImpressum {
+    color: white !important;
+}
+.ModalImpressum a {
+    color: white;
+}
+/*Impressum*/
+.closeImpressum {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeImpressum:hover,
+.closeImpressum:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*Datenschutz*/
+.closeDatenschutz {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeDatenschutz:hover,
+.closeDatenschutz:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*AGB*/
+.closeAGB {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeAGB:hover,
+.closeAGB:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.space4SixthPage{
+    margin-bottom: 100px;
+}
+/*---------------------------------------ÜBERSCHRIFTEN---------------------------------------*/
+.Home {
+    width: 100%;
+    height: 80px;
+}
+.Überuns {
+    width: 100%;
+    height: 80px;
+}
+.Projekte {
+    width: 100%;
+    height: 80px;
+}
+.Team {
+    width: 100%;
+    height: 80px;
+}
+.Partner {
+    width: 100%;
+    height: 80px;
+}
+.Kontakt {
+    width: 100%;
+    height: 80px;
+}
+h1 {
+    font-size: 34px !important; /* Grundgröße für große Bildschirme */
+    margin-bottom: 5px !important;
+}
+/*---------------------------------------DIE FRAMES---------------------------------------*/
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+    background-color: #f8f9f9;
+}
+/*FRAMES FÜR PROJEKTE*/
+.framesidelinksthird {
+    max-width: 15%;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    background-color: #f8f9f9 ;
+    padding-left: 10px;
+    float: left;
+    padding-top: 15px;
+}
+
+.framesiderechtsthird {
+    max-width: 15%;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    background-color: #f8f9f9 ;
+    padding-right: 10px;
+    float: right;
+    padding-top: 15px;
+}
+.framecenterthird {
+    width: 1400px;
+    box-sizing: border-box;
+    background-color: #f8f9f9 ;
+    margin: auto;
+    float: left;
+    padding-top: 15px;
+    flex: 0 1 auto;
+}
+/*FRAMES FÜR TEAM UND PARTNER SEITE*/
+.framecenter4\&5 {
+    width: 1400px; /*FÜR PROJEKTE MINWIDTH 1400PX damit diese nicht skaliert werden*/
+    box-sizing: border-box;
+    background-color: #f8f9f9 ;
+    margin: auto;
+    float: left;
+    padding-top: 15px;
+    flex: 0 1 auto;
+}
+.framesidelinks4\&5 {
+    max-width: 15%;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    background-color: #f8f9f9 ;
+    padding-left: 10px;
+    float: left;
+    padding-top: 15px;
+}
+
+.framesiderechts4\&5 {
+    max-width: 15%;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    background-color: #f8f9f9 ;
+    padding-right: 10px;
+    float: right;
+    padding-top: 15px;
+}
+
+.framesidelinks {
+    max-width: 15%;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    background-color: #f8f9f9 ;
+    padding-left: 10px;
+    float: left;
+    padding-top: 15px;
+}
+
+.framesiderechts {
+    max-width: 15%;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    background-color: #f8f9f9 ;
+    padding-right: 10px;
+    float: right;
+    padding-top: 15px;
+}
+
+.framecenter {
+    width: 1400px; /*FÜR PROJEKTE MINWIDTH 1400PX damit diese nicht skaliert werden*/
+    box-sizing: border-box;
+    background-color: #f8f9f9 ;
+    margin: auto;
+    float: left;
+    padding-top: 15px;
+    flex: 0 1 auto;
+}
+/*----------------------------------MENÜ TOGGLE FÜR UNTER 575PX---------------------------------------*/
+/* Burger Icon */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 40px;
+    height: 35px;
+    background-color: darkslategray;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 10px;
+    margin-left: 4%;
+}
+
+.menu-toggle .menu-toggle-icon {
+    background-color: white;
+    height: 4px;
+    width: 25px;
+    margin: 2.5px;
+    border-radius: 2px;
+    display: none;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    z-index: 1000;
+    padding: 50px 20px;
+    box-sizing: border-box;
+}
+
+.dropdown-menu.show {
+    display: none;
+}
+
+.dropdown-link {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    margin: 15px 0;
+    display: none;
+}
+.w3-button {
+    display: none;
+}
+.w3-display-topright {
+    display: none;
+}
+.dropdown-menu {
+    display: none;
+}
+
+
+/*----------------------------------CONTAINER UND SONSTIGE DUPLIKATE---------------------------------------*/
+.m2-news-container {
+    border: 1px dotted darkslategrey;
+    border-radius: 20px;
+    display: block;
+    margin-bottom: 40px;
+}
+.m2-news-container {
+    border: none;
+    font-size: 16px;
+    text-align: justify;
+    hyphens: auto;
+}
+.newscenterbr{
+    display: none;
+}
+
+.m2-body {
+    margin-left: calc((100% - (4 * 250px) - (2 * 100px)) / 2);
+    font-size: 22px;
+    overflow-x: hidden;
+}
+.m2-text-white {
+    color: white;
+}
+.FooterHeight {
+    height: 5px;
+}
+.m2-flexbox {
+    width: 75% !important;
+    margin-right: 28% !important;
+    margin-left: 0.5% !important;
+    display: flex;
+    border-bottom: 0 solid silver;
+    box-shadow: 0 0 0 lightgray;
+}
+.icon-container {
+    width: 25%;
+    display: flex;
+    justify-content: flex-end; /* Align icons to the right */
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 20px; /* Adjust as needed */
+    gap: 20px;
+}
+
+
+.m2-nav-button-body {
+    margin: 0;
+    margin-right: 15px;
+    width: 175px;
+    height: 100px;
+    font-size: 24px;
+}
+
+.m2-nav-button {
+    height: 65%;
+    display: grid;
+    place-items: center; /* Zentriert sowohl vertikal als auch horizontal */
+}
+
+.m2-nav-button-body:hover {
+    background-color: #577777;
+    height: 65px;
+    border-bottom: 3px solid darkgoldenrod;
+}
+.m2-nav-icon-body {
+    height: 60px;
+}
+.m2-nav-text {
+    font-size: 22px;
+    color: white;
+    vertical-align: middle;
+    z-index: 1;
+    width: 96%;
+    margin: auto;
+}
+
+a.no-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: text; /* Optional: Ändert den Cursor zu Text */
+}
+.m2-nav-button-left {
+    margin-left: 56px;
+}
+
+.bodylayout {
+    display: flex;
+}
+
+
+ul {
+    list-style-type: none;
+}
+
+.m2-header-icon {
+    max-height: 40px;
+    max-width: 40px;
+}
+.not-flex {
+    display: block; /* Oder inline-block, grid, etc. */
+    width: 20%; /* Beispielhaft, um den Blockcharakter zu verdeutlichen */
+}
+.m2-shift-down {
+    margin-top: 100px;
+}
+.m2-cols {
+    column-count: 3;
+    column-gap: 40px;
+    column-rule: 2px dotted lightgray;
+    column-fill: auto;
+}
+
+.m2-content-container {
+    padding: 20px;
+}
+
+.m2-content-main {
+    margin-bottom: 10px;
+    width: 100%;
+}
+.m2-team-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+/*name und text ganz zu oberst*/
+.card-title {
+    margin: 0;
+    font-size: 20px;
+    margin-right: 30px;
+}
+.card-title-team {
+    margin: 0;
+    font-size: 24px;
+    margin-right: 30px;
+    margin-top: 10px;
+}
+.project-text-card {
+    margin: 0;
+    font-size: 20px;
+}
+.card-title-team-color {
+    color: rgb(0, 119, 181);
+}
+.card-text {
+    font-size: large;
+    margin: 0;
+    display: block;
+    margin-right: 30px;
+    margin-bottom: 10px;
+}
+
+
+.card-text-a {
+    font-size: large;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Optional: Adds space between icon and email */
+}
+.card-text2-a {
+    font-size: large;
+    margin: 0;
+    display: none;
+    margin-right: 30px;
+}
+/*Für die neuen karten*/
+.m2-team-partner-card-section {
+    display: flex; /* Flexbox für das Layout der Karten */
+    flex-wrap: wrap; /* Karten umbrechen, wenn sie nicht nebeneinander passen */
+    justify-content: space-between; /* Gleicher Abstand zwischen den Karten */
+    width: 1400px; /* Der Container hat eine maximale Breite von 96% */
+}
+.m2-project-card-section {
+    display: flex; /* Flexbox für das Layout der Karten */
+    flex-wrap: wrap; /* Karten umbrechen, wenn sie nicht nebeneinander passen */
+    justify-content: space-between; /* Gleicher Abstand zwischen den Karten */
+    width: 1400px; /* Der Container hat eine maximale Breite von 96% */
+    gap: 36.66px;
+}
+.team-partner-card {
+    display: flex; /* Flexbox für Layout */
+    align-items: stretch; /* Gleiche Höhe für alle Kinder */
+    box-sizing: border-box; /* Beinhaltet Padding und Border in der Breite */
+    margin-bottom: 40px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    width: 650px;
+}
+.card-shadow {
+    box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)
+}
+.PositionOfLinkedinIcon2 {
+    word-break: break-word;
+    display: none;
+}
+/*-------------------------------------Für Home(Index)------------------------------*/
+
+.index-customer{
+    font-weight: bold;
+    font-size: larger;
+}
+
+.scale-element {
+    width: 400px;
+    transform: scaleX(0.8);
+    transform-origin: left top;
+}
+
+.index-text-news{
+    width: 15%;
+    box-sizing: border-box;
+    background-color: #f8f9f9 ;
+    padding-left: 30px;
+    padding-right: 30px;
+    float: right;
+    padding-top: 0;
+    display: block;
+    position: fixed;
+    font-size: 22px;
+}
+
+.index-text-newscenter {
+    display: none;
+}
+
+
+.text-div {
+    word-break: break-word;
+    min-width: 250px;
+    max-width: 1400px;
+    margin: auto;
+}
+.platzhalterdiv {
+    max-width: 2000px;
+    background-color: #f8f9f9;
+}
+
+.index-text {
+    font-size: 22px;
+    word-break: break-word;
+    min-width: 250px;
+    max-width: 1400px;
+    margin: auto;
+}
+/*---------------------------Für Über uns(About)---------------------------------------*/
+.about-customer{
+    font-weight: bold;
+    font-size: 22px;
+}
+.about-text {
+    font-size: 22px;
+}
+
+/*---------------------------------------Für Projekte(Project)---------------------------------------*/
+.project-text {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.project-card {
+    /* Verhindert, dass die Karte über den Container hinausragt */
+    /* width: 28%;  Karte nimmt die volle Breite des Containers ein */
+    box-sizing: border-box; /* Inkludiert Padding und Border in der Breite und Höhe */
+    object-fit: cover;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
+    width: 430px;
+    padding-right: 30px;
+}
+
+.project-card-img {
+    width: calc(100% + 30px); /* Bild nimmt die volle Breite des Containers ein */
+    height: 100%; /* Automatische Höhe basierend auf dem Bildverhältnis */
+    max-height: 353px;
+    display: block; /* Entfernt Lücken unter dem Bild */
+    margin: 0 auto;
+    border-radius: inherit;
+}
+
+
+/*  Anschalten 1
+.w3-card-4 img {
+    width: auto; /* Bild nimmt die volle Breite des Containers ein
+    max-height: 200px; /* Höhe bleibt proportional
+    display: block; /* Entfernt Lücken unter dem Bild
+    margin: 0 auto;
+} */
+
+.card-container {
+    width: 96%; /* Textcontainer passt sich der Breite des Bildes an */
+    height: 200px;
+    text-align: left; /* Zentriert den Text */
+    font-size: 1em; /* Verkleinert den Text leicht */
+    margin: 0 auto; /* Zentriert den Textcontainer innerhalb der Karte */
+    padding: 0.01em 16px;
+}
+.project-card-container {
+    height: 380px;
+}
+
+
+
+/*---------------------------------------Für Team (Webpage)---------------------------------------*/
+.team-partner-card-img {
+    width: 100%;
+    max-width: 200px; /* Maximale Breite des Bildes */
+    height: 100%; /* Automatische Höhe basierend auf dem Bildverhältnis */
+    max-height: 201px;
+    /* object-fit: contain;  Kann man lassen aber es verbreitert dann das bild nicht mehr */
+    flex-shrink: 0; /* Verhindert, dass das Bild schrumpft */
+    display: block; /* Vermeidet zusätzliche Zeilenumbrüche */
+
+}
+
+
+.team-text {
+    font-size: 22px;
+}
+/*---------------------------------------Für Partner(Partner)---------------------------------------*/
+
+.partner-text{
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+/*---------------------------------------Für Kontakt(Contact)---------------------------------------*/
+.contact-text{
+    font-size: 22px;
+}
+/*Fürs Kontaktformular*/
+.google-maps-card {
+    width: 50%;
+    display: flex;
+    float: left;
+    height: 37.5vh;
+    border: 0;
+    overflow: hidden;
+    margin-bottom: 30px;
+    margin-left: -1%;
+}
+.contact-form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 3px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    overflow: hidden;
+    font-size: 22px;
+    height: 37vh;
+    text-align: center;
+    vertical-align: center;
+    margin-bottom: 0;
+}
+
+
+.contact-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.contact-form input {
+    width: 90%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    vertical-align: center;
+    margin: auto;
+    padding: 15px;
+    height: 40px;
+}
+
+.contact-form button {
+    padding: 10px;
+    background-color: darkslategrey;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 94%;
+    margin: auto;
+}
+.contact-form button:hover {
+    background-color: #45a049;
+}
+
+.partner-text {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+.contact-text {
+    font-size: 22px;
+}
+/*------------------------------ALLGEMEIN DEFINIERTE ABSTÄNDE-----------------------------------------------------*/
+
+.space4textup {
+    margin-top: 40px;
+}
+
+.space4text{
+    margin-bottom: 40px;
+}
+
+.space4nextpage {
+    margin-bottom: 80px;
+}
+.kontakt-formular2 {
+    display: none;
+}
+.google-maps-card2 {
+    display: none;
+}
+.contact-form2{
+    display: none;
+}
+
+/*---------------------------------------RESPONSIVE BEREICH FÜR ALLE SEITEN---------------------------------------*/
+@media screen and (max-width: 2128px), (max-height: 1150px) {
+    /*-------------------BODY HEADER MAIN FOOTER------------------------------------*/
+    .m2-project-card-section {
+        display: flex; /* Flexbox für das Layout der Karten */
+        flex-wrap: wrap; /* Karten umbrechen, wenn sie nicht nebeneinander passen */
+        justify-content: space-between; /* Gleicher Abstand zwischen den Karten */
+        max-width: 1100px; /* Der Container hat eine maximale Breite von 96% */
+        gap: 25px;
+    }
+    .m2-team-partner-card-section {
+        width: 1100px; /* Der Container hat eine maximale Breite von 96% */
+    }
+    /*TOGGLE MENÜ*/
+    .menu-toggle {
+        display: none;
+    }
+
+    .menu-toggle .menu-toggle-icon {
+        display: none;
+    }
+
+    /* Dropdown Menu */
+    .dropdown-menu {
+        display: none;
+    }
+
+    .dropdown-menu.show {
+        display: none;
+    }
+
+    .dropdown-link {
+        display: none;
+    }
+    .Footer4SocialMedia p {
+        margin-right: -30px;
+    }
+    .Footer4SocialMedia span {
+        margin-right: -25px;
+    }
+    .modal-content {
+        max-width: 1000px;
+    }
+    .modal-content-Datenschutz {
+        max-width: 1000px;
+    }
+    /*---------------------------------------ÜBERSCHRIFTEN---------------------------------------*/
+    h1 {
+        font-size: 32px !important; /* Verkleinert für mittlere Bildschirme */
+        margin-bottom: 5px !important;
+    }
+    .first {
+        content: "";
+        clear: both;
+        display: table;
+        background-color: #f8f9f9;
+    }
+    /*FRAMES FÜR PROJEKTE*/
+    .framesidelinksthird {
+        max-width: 5%;
+        flex: 1 1 auto;
+    }
+
+    .framesiderechtsthird {
+        max-width: 5%;
+        flex: 1 1 auto;
+    }
+
+    .framecenterthird {
+        max-width: 1150px; /*FÜR PROJEKTE MINWIDTH 1400PX damit diese nicht skaliert werden*/
+        flex: 0 1 auto;
+    }
+    /*FRAMES FÜR TEAM UND PARTNER*/
+    .framesiderechts4\&5 {
+        max-width: 5%;
+        flex: 1 1 auto;
+    }
+
+    .framesidelinks4\&5 {
+        max-width: 5%;
+        flex: 1 1 auto;
+    }
+
+    .framecenter4\&5 {
+        width: 1150px; /*FÜR PROJEKTE MINWIDTH 1400PX damit diese nicht skaliert werden*/
+        flex: 0 1 auto;
+    }
+    /*---------------------------------------DIE FRAMES---------------------------------------*/
+    .framesidelinks {
+        width: 5%;
+        box-sizing: border-box; /*!important*/
+        float: left;
+    }
+
+    .framecenter {
+        width: 90%;
+        box-sizing: border-box; /*!important*/
+        float: left;
+
+    }
+    .framesiderechts {
+        width: 5%;
+        box-sizing: border-box; /*!important*/
+        float: right;
+    }
+
+    /*------------------------------ALLGEMEIN DEFINIERTE ABSTÄNDE-----------------------------------------------------*/
+    .space4texthome{
+        margin-bottom: 40px;
+    }
+    .space4text{
+        margin-bottom: 40px !important;
+    }
+    .prozesse-text {
+        margin-top: 40px !important;
+    }
+    .text-div {
+        word-break: break-word;
+        min-width: 250px;
+        max-width: 1150px;
+        margin: auto;
+
+    }
+    .text-div-home {
+        word-break: break-word;
+        min-width: 250px;
+        max-width: 1400px;
+        margin: auto;
+
+    }
+
+
+    /*----------------------------------CONTAINER UND SONSTIGE DUPLIKATE---------------------------------------*/
+
+    label {
+        display: none;
+    }
+
+
+    .hide {
+        display: inline-flex;
+    }
+
+    .m2-nav-text {
+        font-size: 22px;
+        color: white;
+        vertical-align: middle;
+        z-index: 1;
+        width: 96%;
+        margin: auto;
+
+    }
+
+    .team-partner-card {
+        display: flex; /* Flexbox für Layout */
+        align-items: stretch; /* Gleiche Höhe für alle Kinder */
+        box-sizing: border-box; /* Beinhaltet Padding und Border in der Breite */
+        margin-bottom: 40px;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        width: 525px;
+    }
+    /*-------------------RESPONSIVE FÜR HOME------------------------------------*/
+    .index-text {
+        font-size: 20px;
+        word-break: break-word;
+        min-width: 250px;
+        max-width: 1150px;
+        margin: auto;
+    }
+    .index-text-news {
+        display: none !important;
+        font-size: 20px;
+    }
+    .index-br {
+        display: none;
+    }
+    .index-text-newscenter {
+        display: block;
+        font-size: 20px;
+    }
+    .news-br{
+        display: none;
+    }
+    .newscenterbr{
+        display: block;
+    }
+
+
+    /*---------------------------------------RESPONSIVE FÜR ÜBER UNS---------------------------------------*/
+    .about-text {
+        font-size: 20px;
+    }
+    .about-customer {
+        font-size: 20px;
+    }
+
+    /*---------------------------------------RESPONSIVE FÜR PROJEKTE---------------------------------------*/
+    .project-text {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .project-text-card {
+        font-size: 18px;
+    }
+    .card-title {
+        font-size: 18px;
+        margin-right: 30px;
+    }
+    .card-title-team {
+        font-size: 18px;
+        margin-right: 30px;
+    }
+    .card-text {
+        font-size: medium;
+        margin: 0;
+        display: block;
+        margin-right: 30px;
+    }
+
+    .card-text-a {
+        font-size: medium;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px; /* Optional: Adds space between icon and email */
+    }
+    .card-text2-a {
+        font-size: medium;
+        margin-bottom: 10px;
+        display: none;
+    }
+    .project-card {
+        min-width: 350px;
+        max-width: 350px;
+    }
+    .project-card-img {
+        width: calc(100% + 30px); /* Bild nimmt die volle Breite des Containers ein */
+        height: 100%; /* Automatische Höhe basierend auf dem Bildverhältnis */
+        min-height: 350px;
+        max-height: 350px;
+        display: block; /* Entfernt Lücken unter dem Bild */
+        margin: 0 auto;
+        border-radius: inherit;
+    }
+    .project-card-container {
+        min-height: 400px;
+        max-height: 400px;
+    }
+
+
+    /*----------------------------------RESPONSIVE FÜR TEAM---------------------------------------*/
+
+
+
+    .team-partner-card-img {
+        width: 100%; /* Vergrößerte Bildbreite */
+        max-width: 225px; /* Maximale Bildbreite für mehr Kontrolle */
+        height: 100%; /* Automatische Höhe basierend auf dem Bildverhältnis */
+        max-height: 225px;
+    }
+
+    .team-text {
+        font-size: 20px;
+
+    }
+
+
+
+    /*-------------------RESPONSIVE FÜR PARTNER------------------------------------*/
+
+    .partner-text {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    /*---------------------------------------RESPONSIVE FÜR KONTAKT---------------------------------------*/
+    .contact-text {
+        font-size: 20px;
+    }
+
+    .m2-nav-button-body {
+        margin: 0;
+        margin-right: 15px;
+        width: 175px;
+        height: 100px;
+        font-size: 24px;
+
+    }
+
+    .kontakt-formular {
+        width: 1150px!important;
+        margin: auto!important;
+        display: flex!important;
+        flex-direction: column!important;
+        justify-content: center!important;
+        align-items: center!important;
+    }
+    .google-maps-card {
+        width: 1200px; /* Begrenzt die maximale Breite */
+        height: 32vh; /* Beibehaltung der Höhe */
+        border: 0;
+        overflow: hidden;
+        display: block !important;
+        margin: auto !important;
+        margin-bottom: 30px !important;
+    }
+    .contact-form {
+        width: 1124px;
+        display: block;
+        margin: auto;
+        flex-direction: column;
+        gap: 20px;
+        padding: 12px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+        overflow: hidden;
+        font-size: 20px;
+        height: 30vh;
+        text-align: center;
+        vertical-align: center;
+    }
+    .nobr2{
+        display: none;
+    }
+    .contact-form label {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .contact-form input {
+        width: 96%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        vertical-align: center;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+    .contact-form button {
+        width: 97%;
+        padding: 10px;
+        background-color: darkslategrey;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .contact-form button:hover {
+        background-color: #45a049;
+    }
+}
+
+@media screen and (max-width: 1366px), (max-height: 1100px) {
+    /*-------------------BODY HEADER MAIN FOOTER------------------------------------*/
+    .m2-flexbox {
+        width: 81% !important;
+        margin-right: 28% !important;
+        margin-left: 0.5% !important;
+        display: flex;
+        border-bottom: 0 solid silver;
+        box-shadow: 0 0 0 lightgray;
+    }
+    .m2-box-space {
+        font-size: 18px;
+    }
+    .icon-container {
+        width: 25%;
+        display: flex;
+        justify-content: flex-end; /* Align icons to the right */
+        align-items: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding-right: 20px; /* Adjust as needed */
+        gap: 15px;
+    }
+    .m2-project-card-section {
+        display: flex; /* Flexbox für das Layout der Karten */
+        flex-wrap: wrap; /* Karten umbrechen, wenn sie nicht nebeneinander passen */
+        justify-content: space-between; /* Gleicher Abstand zwischen den Karten */
+        max-width: 675px; /* Der Container hat eine maximale Breite von 96% */
+        gap: 20px;
+    }
+    .m2-team-partner-card-section {
+        width: 675px; /* Der Container hat eine maximale Breite von 96% */
+    }
+    .project-card {
+        min-width: 325px;
+        max-width: 325px;
+    }
+    .project-card-img {
+        width: calc(100% + 30px); /* Bild nimmt die volle Breite des Containers ein */
+        height: 100%; /* Automatische Höhe basierend auf dem Bildverhältnis */
+        min-height:325px;
+        max-height: 325px;
+        display: block; /* Entfernt Lücken unter dem Bild */
+        margin: 0 auto;
+        border-radius: inherit;
+    }
+
+    .project-card-container {
+        min-height: 500px;
+        max-height: 500px;
+    }
+    /*FRAMES FÜR PROJEKTE*/
+    .framesidelinksthird {
+        max-width: 5%;
+        flex: 1 1 auto;
+    }
+
+    .framesiderechtsthird {
+        max-width: 5%;
+        flex: 1 1 auto;
+    }
+
+    .framecenterthird {
+        max-width: 708px; /*FÜR PROJEKTE MINWIDTH 1400PX damit diese nicht skaliert werden*/
+        flex: 0 1 auto;
+    }
+    /*FRAMES FÜR TEAM UND PARTNER*/
+    .framesidelinks4\&5 {
+        max-width: 5%;
+        flex: 1 1 auto;
+    }
+
+    .framesiderechts4\&5 {
+        max-width: 5%;
+        flex: 1 1 auto;
+    }
+
+    .framecenter4\&5 {
+        max-width: 708px; /*FÜR PROJEKTE MINWIDTH 1400PX damit diese nicht skaliert werden*/
+        flex: 0 1 auto;
+    }
+    /*TOGGLE MENÜ*/
+    .menu-toggle {
+        display: none;
+    }
+
+    .menu-toggle .menu-toggle-icon {
+        display: none;
+    }
+
+    /* Dropdown Menu */
+    .dropdown-menu {
+        display: none;
+    }
+
+    .dropdown-menu.show {
+        display: none;
+    }
+
+    .dropdown-link {
+        display: none;
+    }
+    .text-div {
+        min-width: 50px;
+        max-width: 708px;
+    }
+
+    .text-div-home {
+        min-width: 50px;
+        max-width: 708px;
+        word-break: break-word;
+    }
+    .Footer4SocialMedia p {
+        margin-right: -30px;
+    }
+    .Footer4SocialMedia span {
+        margin-right: -25px;
+    }
+    /*---------------------------------------ÜBERSCHRIFTEN---------------------------------------*/
+    h1 {
+        font-size: 30px !important;
+        font-weight: bolder !important;
+    }
+    /*---------------------------------------DIE FRAMES---------------------------------------*/
+    .framesidelinks {
+        flex: 1 1 0;
+        width: 5%;
+        box-sizing: border-box; /*!important*/
+        float: left;
+    }
+
+    .framecenter {
+        width: 90%;
+        box-sizing: border-box; /*!important*/
+        float: left;
+    }
+    .framesiderechts {
+        flex: 1 1 0;
+        width: 5%;
+        box-sizing: border-box; /*!important*/
+        float: right;
+    }
+
+    /*----------------------------------CONTAINER UND SONSTIGE DUPLIKATE---------------------------------------*/
+    .team-partner-card {
+        width: 100%; /* Karten nehmen die volle Breite ein */
+        margin: auto;
+        display: flex; /* Flexbox für Layout */
+        align-items: stretch; /* Gleiche Höhe für alle Kinder */
+        box-sizing: border-box; /* Beinhaltet Padding und Border in der Breite */
+        margin-bottom: 20px;
+        min-width: 250px;
+        max-width: 96%;
+    }
+
+    .card-title {
+        margin: 0;
+        font-size: 16px;
+        word-break: break-word;
+        margin-right: 30px;
+    }
+    .card-title-team {
+        margin: 0;
+        font-size: 16px;
+        word-break: break-word;
+        margin-right: 30px;
+    }
+
+    .m2-nav-button-body {
+        margin: 0;
+        margin-right: 30px;
+        width: 175px;
+        height: 100px;
+        font-size: 20px;
+    }
+    .modal-content {
+        max-width: 700px;
+    }
+    .modal-content-Datenschutz {
+        max-width: 700px;
+    }
+    /*-------------------RESPONSIVE FÜR HOME------------------------------------*/
+    .index-text {
+        font-size: 20px;
+    }
+    .index-br {
+        display: none;
+    }
+
+
+    .index-text-news{
+        display: none;
+    }
+
+    .index-text-newscenter {
+        display: block;
+        font-size: 20px;
+    }
+    .news-br{
+        display: block;
+    }
+
+
+    /*---------------------------------------RESPONSIVE FÜR ÜBER UNS---------------------------------------*/
+
+
+    /*---------------------------------------RESPONSIVE FÜR PROJEKTE---------------------------------------*/
+    .project-text {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        font-size: large;
+        margin-right: 30px;
+    }
+    .card-text-a {
+        font-size: large;
+        margin-right: 30px;
+    }
+    .card-text2-a {
+        font-size: large;
+        margin-right: 30px;
+        display: none;
+    }
+    /* Anschalten 2
+    .w3-card-4 {
+        max-width: 100%; /* Verhindert, dass die Karte über den Container hinausragt
+        width: 46%; /* Karte nimmt die volle Breite des Containers ein
+        margin: auto;
+        margin-bottom: 25px; /* Fügt unten einen Abstand hinzu
+        box-sizing: border-box; /* Inkludiert Padding und Border in der Breite und Höhe
+    }
+
+    .w3-card-4 img {
+        width: 100%; /* Bild nimmt die volle Breite des Containers ein
+        height: auto; /* Höhe bleibt proportional
+        display: block; /* Entfernt Lücken unter dem Bild
+        margin: 0 auto;
+    }
+*/
+
+    .card-container {
+        width: 100%; /* Textcontainer passt sich der Breite des Bildes an */
+        height: 125px;
+        text-align: left; /* Zentriert den Text */
+        font-size: 1em; /* Verkleinert den Text leicht */
+        margin: 0 auto; /* Zentriert den Textcontainer innerhalb der Karte */
+
+    }
+
+
+    /*----------------------------------RESPONSIVE FÜR TEAM---------------------------------------*/
+
+
+    /*-------------------RESPONSIVE FÜR PARTNER------------------------------------*/
+    .partner-text {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    /*---------------------------------------RESPONSIVE FÜR KONTAKT---------------------------------------*/
+    .kontakt-formular {
+        width: 675px!important;
+        margin: auto!important;
+        display: flex!important;
+        flex-direction: column!important;
+        justify-content: center!important;
+        align-items: center!important;
+    }
+    .google-maps-card {
+        width: 700px; /* Begrenzt die maximale Breite */
+        height: 32vh; /* Beibehaltung der Höhe */
+        border: 0;
+        overflow: hidden;
+        display: block !important;
+        margin: auto !important;
+        margin-bottom: 30px !important;
+    }
+    .contact-form {
+        width: 649px;
+        display: block;
+        margin: auto;
+        flex-direction: column;
+        gap: 20px;
+        padding: 12px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+        overflow: hidden;
+        font-size: 20px;
+        height: 32vh;
+        text-align: center;
+        vertical-align: center;
+        margin-bottom: 50px;
+
+    }
+
+    .contact-form label {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .contact-form input {
+        width: 96%;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        vertical-align: center;
+        margin: auto;
+        margin-bottom: 35px;
+    }
+
+    .contact-form button {
+        width: 100%;
+        padding: 10px;
+        background-color: darkslategrey;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .contact-form button:hover {
+        background-color: #45a049;
+    }
+}
+
+@media screen and (max-width: 768px), (max-height: 799px) {
+    /*-------------------ONEPAGER EFFEKT ENTFERNEN UND ALLES SCROLLBAR MACHEN------------------------------------*/
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    html, body {
+        height: 100vh;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .pages {
+        display: flex;
+        overflow-y: auto;
+    }
+
+    .pagination {
+        display: none;
+    }
+
+    .pagination>li {
+        display: none;
+    }
+
+    .pagination>li.active {
+        display: none;
+    }
+
+    .title {
+        display: none;
+    }
+    /*TOGGLE MENÜ*/
+    /* Burger Icon */
+    .menu-toggle {
+        display: flex; /* Damit das Icon sichtbar wird */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        width: 40px;
+        height: 35px;
+        background-color: darkslategray;
+        border: 1px solid white;
+        border-radius: 5px;
+        position: absolute;
+        top: 0 !important;
+        left: 10px;
+    }
+
+    .menu-toggle .menu-toggle-icon {
+        background-color: white;
+        height: 4px;
+        width: 30px;
+        margin: 5px;
+        border-radius: 2px;
+        display: block;
+    }
+
+    /* Dropdown Menu */
+    .dropdown-menu {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 55%;
+        height: 100%;
+        background-color: darkslategray;
+        color: white;
+        z-index: 1000;
+        padding: 50px 20px;
+        box-sizing: border-box;
+        opacity: 1;
+        margin-right: 45%;
+    }
+
+    .dropdown-menu.show {
+        display: block;
+    }
+
+    .dropdown-link {
+        color: white;
+        text-decoration: none;
+        font-size: 24px;
+        margin: 15px 0;
+        display: block;
+    }
+    .w3-button {
+        display: block;
+    }
+    .w3-display-topright {
+        display: block;
+    }
+    /*TOGGLE MENÜ*/
+
+
+    .menu-toggle .menu-toggle-icon {
+        display: block;
+        width: 30px;
+        margin: 5px;
+    }
+    .m2-flexbox {
+        display: none;
+    }
+    .m2-nav-text {
+        display: none;
+    }
+    .m2-nav-button {
+        display: none;
+    }
+    .m2-box-space {
+        display: none;
+    }
+
+    .no-scroll {
+        overflow: hidden;
+        touch-action: none;
+    }
+
+    .w3-button {
+        position: absolute;
+        top: 65px;
+        right: 4%;
+        font-size: 20px;
+        display: block;
+    }
+
+    .modal-content {
+        height: 700px;
+        max-width: 500px;
+    }
+    .google-maps-card {
+        display: none !important;
+    }
+    .contact-form {
+        display: none !important;
+    }
+    .kontakt-formular2 {
+        display: block;
+    }
+    .google-maps-card2 {
+        display: block;
+    }
+    .contact-form2{
+        display: block;
+    }
+    /*---------------------------------------ÜBERSCHRIFTEN---------------------------------------*/
+    h1 {
+        font-size: 26px !important;
+        font-weight: bold !important;
+        margin-bottom: 5px !important;
+        padding-right: 10px !important;
+        padding-left: 10px !important;
+    }
+    /*---------------------------------------DIE FRAMES---------------------------------------*/
+    .framesidelinksthird {
+        width: 0;
+        display: none;
+    }
+
+    .framecenterthird {
+        width: 100%;
+    }
+    .framesiderechtsthird {
+        width: 0;
+        display: none;
+    }
+    /*FRAMEA FÜR TEAM UND PARTNER*/
+    .framesidelinks4\&5 {
+        width: 0;
+        display: none;
+    }
+
+    .framecenter4\&5 {
+        width: 100%;
+    }
+    .framesiderechts4\&5 {
+        width: 0;
+        display: none;
+    }
+    /*FRAMES FÜR DIE RESTLICHEN SEITEN*/
+
+    .framesidelinks {
+        width: 0;
+        display: none;
+    }
+
+    .framecenter {
+        width: 100%;
+
+
+    }
+    .framesiderechts {
+        width: 0;
+        display: none;
+    }
+
+    /*----------------------------------CONTAINER UND SONSTIGE DUPLIKATE---------------------------------------*/
+    .m2-nav-button-body {
+        margin: 0;
+        margin-right: 30px;
+        width: 175px;
+        height: 100px;
+        font-size: large;
+    }
+
+    /*-------------------RESPONSIVE FÜR HOME------------------------------------*/
+    .index-text {
+        font-size: 18px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .index-text-newscenter {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+
+    /*---------------------------------------RESPONSIVE FÜR ÜBER UNS---------------------------------------*/
+    .about-text {
+        font-size: 18px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .about-customer{
+        font-size: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .project-text {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .partner-text {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    /*---------------------------------------RESPONSIVE FÜR PROJEKTE---------------------------------------*/
+    /* Anschalten 3
+    .w3-card-4 {
+
+        max-width: 100%; /* Verhindert, dass die Karte über den Container hinausragt
+        width: 96%; /* Karte nimmt die volle Breite des Containers ein
+        margin: auto;
+        margin-bottom: 25px; /* Fügt unten einen Abstand hinzu
+        box-sizing: border-box; /* Inkludiert Padding und Border in der Breite und Höhe
+    }
+
+    .w3-card-4 img {
+        width: 100%; /* Bild nimmt die volle Breite des Containers ein
+        height: auto; /* Höhe bleibt proportional
+        display: block; /* Entfernt Lücken unter dem Bild
+        margin: 0 auto;
+    }
+    */
+    .m2-project-card-section {
+        display: flex; /* Flexbox für das Layout der Karten */
+        flex-wrap: wrap; /* Karten umbrechen, wenn sie nicht nebeneinander passen */
+        justify-content: space-between; /* Gleicher Abstand zwischen den Karten */
+        width: 100%; /* Der Container hat eine maximale Breite von 96% */
+        gap: 10px;
+    }
+
+    .m2-team-partner-card-section {
+        display: flex; /* Flexbox für das Layout der Karten */
+        flex-wrap: wrap; /* Karten umbrechen, wenn sie nicht nebeneinander passen */
+        justify-content: space-between; /* Gleicher Abstand zwischen den Karten */
+        width: 100%; /* Der Container hat eine maximale Breite von 96% */
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+    .kontakt-formular {
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+    .project-card {
+        width: 46%; /* Karte nimmt die volle Breite des Containers ein */
+        margin: auto;
+        margin-bottom: 25px; /* Fügt unten einen Abstand hinzu */
+        box-sizing: border-box; /* Inkludiert Padding und Border in der Breite und Höhe */
+        min-width: 230px;
+        max-width: 325px;
+    }
+
+
+
+    .card-container {
+        width: 100%; /* Textcontainer passt sich der Breite des Bildes an */
+        height: 125px;
+        text-align: left; /* Zentriert den Text */
+        font-size: 1em; /* Verkleinert den Text leicht */
+        margin: 0 auto; /* Zentriert den Textcontainer innerhalb der Karte */
+
+    }
+
+    .project-card-img {
+        width: calc(100% + 30px); /* Bild nimmt die volle Breite des Containers ein */
+        height: 100%; /* Automatische Höhe basierend auf dem Bildverhältnis */
+        min-height: 230px;
+        max-height: 325px;
+        display: block; /* Entfernt Lücken unter dem Bild */
+        margin: 0 auto;
+        border-radius: inherit;
+    }
+    .project-card-container {
+        min-height: 230px;
+        max-height: 325px;
+    }
+
+
+    /*----------------------------------RESPONSIVE FÜR TEAM---------------------------------------*/
+
+    .team-partner-card {
+        max-width: 94%; /* Karten nehmen die volle Breite ein */
+        margin: auto;
+        display: flex; /* Flexbox für Layout */
+        align-items: stretch; /* Gleiche Höhe für alle Kinder */
+        box-sizing: border-box; /* Beinhaltet Padding und Border in der Breite */
+        margin-bottom: 20px;
+        min-width: 150px;
+        margin-left: 1%;
+        margin-right: 2%;
+    }
+
+
+    .team-partner-card-img {
+        width: 100%; /* Vergrößerte Bildbreite */
+        max-width: 275px; /* Maximale Bildbreite für mehr Kontrolle */
+        height: 100%; /* Automatische Höhe basierend auf dem Bildverhältnis */
+        max-height: 275px;
+    }
+    .card-container {
+        min-width: 150px;
+        max-width: 600px;
+    }
+    /*text verschwinden lassen und verkleinern*/
+    .card-title {
+        margin: 0;
+        font-size: 16px;
+        word-break: break-word;
+        margin-right: 30px;
+    }
+    .card-title-team {
+        margin: 0;
+        font-size: 16px;
+        word-break: break-word;
+        margin-right: 30px;
+    }
+
+    .card-text {
+        display: none;
+    }
+
+    .team-text {
+        font-size: 18px;
+        margin-bottom: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .card-title-team{
+        padding-top: 75px;
+        word-break: break-word;
+    }
+    .card-text-a{
+        word-break: break-word;
+        display: none;
+    }
+    .card-text2-a{
+        word-break: break-word;
+        display: block;
+    }
+    .PositionOfLinkedinIcon {
+        word-break: break-word;
+        display: none;
+    }
+    .PositionOfLinkedinIcon2 {
+        word-break: break-word;
+        display: block;
+    }
+
+    /*-------------------RESPONSIVE FÜR PARTNER------------------------------------*/
+
+    /*---------------------------------------RESPONSIVE FÜR KONTAKT---------------------------------------*/
+    .contact-text {
+        font-size: 18px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .m2-nav-text {
+        font-size: 18px;
+        color: white;
+        vertical-align: middle;
+        z-index: 1;
+        width: 96%;
+        margin: auto;
+    }
+
+    /* .iframe-karte iframe {
+        width: 50%;
+        height: 50vh;
+        border: 0;
+    } */
+
+    .google-maps-card {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        height: 25vh;
+        border: 0;
+        overflow: hidden;
+        margin-bottom: 30px;
+        margin-left: 10%;
+    }
+
+    .contact-form {
+        width: 93%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+        overflow: hidden;
+        font-size: 18px;
+        height: 25vh;
+        text-align: center;
+        vertical-align: center;
+        margin-left: 0;
+    }
+    .contact-form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .contact-form input {
+        width: 96%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        vertical-align: center;
+        margin: auto;
+    }
+
+    .contact-form button {
+        padding: 10px;
+        background-color: darkslategrey;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .contact-form button:hover {
+        background-color: #45a049;
+    }
+
+    .Footer4SocialMedia p {
+        font-size: 14px; /* Adjust the font size as needed */
+    }
+    .Footer4SocialMedia span {
+        font-size: 12px; /* Adjust the font size as needed */
+    }
+    .contact-form2 {
+        display: flex;
+        width: 88%;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+        overflow: hidden;
+        font-size: 18px;
+        height: 25vh;
+        text-align: center;
+        margin-left: 0;
+        margin: 2% auto; /* Abstand von 2% auf beiden Seiten */
+    }
+
+    .contact-form2 label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .contact-form2 input {
+        width: 94%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        margin: auto;
+    }
+
+    .contact-form2 button {
+        padding: 10px;
+        background-color: darkslategrey;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .contact-form2 button:hover {
+        background-color: #45a049;
+    }
+    .google-maps-card2 {
+        display: block;
+        width: 95%; /* 90% Breite der Karte */
+        margin-left: 4%; /* 6% Abstand links */
+        margin-right: 2%; /* 2% Abstand rechts */
+    }
+
+}
+
+@media screen and (max-width: 575px), (max-height: 750px){
+    /*-------------------BODY HEADER MAIN FOOTER------------------------------------*/
+    /* Burger Icon */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        width: 40px;
+        height: 35px;
+        background-color: darkslategray;
+        border: 1px solid white;
+        border-radius: 5px;
+        margin: 10px;
+        margin-right: 0.3%;
+    }
+
+    .menu-toggle .menu-toggle-icon {
+        background-color: white;
+        height: 4px;
+        width: 30px;
+        margin: 5px;
+        border-radius: 2px;
+        display: block;
+    }
+
+    /* Dropdown Menu */
+    .dropdown-menu {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 75%;
+        height: 100%;
+        background-color: darkslategray;
+        color: white;
+        z-index: 1000;
+        padding: 50px 20px;
+        box-sizing: border-box;
+        opacity: 1;
+        margin-right: 25%;
+    }
+
+    .dropdown-menu.show {
+        display: block;
+    }
+
+    .dropdown-link {
+        color: white;
+        text-decoration: none;
+        font-size: 24px;
+        margin: 15px 0;
+        display: block;
+    }
+    .w3-button {
+        display: block;
+    }
+    .w3-display-topright {
+        display: block;
+    }
+    /*TOGGLE MENÜ*/
+
+
+    .menu-toggle .menu-toggle-icon {
+        display: block;
+        width: 30px;
+        margin: 5px;
+    }
+    .m2-flexbox {
+        display: none;
+    }
+    .m2-nav-text {
+        display: none;
+    }
+    .m2-nav-button {
+        display: none;
+    }
+    .m2-box-space {
+        display: none;
+    }
+
+    .no-scroll {
+        overflow: hidden;
+        touch-action: none;
+    }
+
+    .w3-button {
+        position: absolute;
+        top: 65px;
+        right: 4%;
+        font-size: 20px;
+        display: block;
+    }
+/*Footer für ganz kleinen view verkleinern*/
+    .Footer4SocialMedia {
+        display: none;
+
+    }
+
+    .Footer4SocialMedia p {
+        display: none;
+    }
+
+    .Footer4SocialMedia a {
+        display: none;
+    }
+
+    .Footer4SocialMedia img {
+        display: none;
+    }
+
+    .Footer4SocialMedia a:hover {
+        display: none;
+    }
+
+    .Footer4SocialMedia span {
+        display: none;
+    }
+
+    .Footer4SocialMediaSmallView {
+        position: absolute;
+        right: 10%;
+        top: 5px;
+        display: flex;
+        flex-direction: column; /* Places content in a vertical stack */
+        align-items: flex-end; /* Aligns content to the right */
+        color: white;
+        margin-left: -10px !important;
+
+    }
+
+    .Footer4SocialMediaSmallView p {
+        margin: 0 30px 20px 0; /* Adds spacing below the "Folgen Sie uns" text */
+        font-size: 14px; /* Adjust the font size as needed */
+        display: block;
+    }
+
+    .Footer4SocialMediaSmallView a {
+        display: flex;
+        align-items: center;
+        color: white; /* Ensures link text is white */
+        text-decoration: none; /* Removes underline */
+    }
+
+    .Footer4SocialMediaSmallView img {
+        margin-right: 10px; /* Adds space between the image and text */
+        margin-left: -15%;
+        display: block;
+    }
+
+    .Footer4SocialMediaSmallView a:hover {
+        text-decoration: none; /* No underline on hover */
+        display: block;
+    }
+
+    .Footer4SocialMediaSmallView span {
+        margin-right: -20px;
+        font-size: 12px; /* Adjust font size if needed */
+        display: block;
+
+    }
+
+    .modal-content {
+        height: 650px;
+        max-width: 300px;
+    }
+
+    /*---------------------------------------ÜBERSCHRIFTEN---------------------------------------*/
+    h1 {
+        font-size: 20px !important;
+        font-weight: bold !important;
+        margin-bottom: 5px !important;
+    }
+    /*---------------------------------------DIE FRAMES---------------------------------------*/
+    .framesidelinks {
+        width: 0;
+        display: none;
+
+    }
+
+    .framecenter {
+        width: 100%;
+
+
+    }
+    .framesiderechts {
+        width: 0;
+        display: none;
+    }
+    /*----------------------------------CONTAINER UND SONSTIGE DUPLIKATE---------------------------------------*/
+
+    /*text verschwinden lassen und verkleinern*/
+    .card-title {
+        margin: 0;
+        font-size: 16px;
+        margin-right: 30px;
+        word-break: break-word;
+    }
+    .card-title-team {
+        margin: 0;
+        font-size: 16px;
+        margin-right: 30px;
+        word-break: break-word;
+    }
+
+    .m2-nav-text a.no-link {
+        color: white;
+        text-decoration: none;
+        text-align: right;
+        font-size: small;
+    }
+
+    a.no-link {
+        text-decoration: none;
+        color: inherit;
+    }
+    .m2-nav-button-body {
+        margin: 0;
+        margin-right: 15px;
+        width: 175px;
+        height: 100px;
+        font-size: 14px;
+    }
+
+    /*----------------------------------TOGGLE MENÜ---------------------------------------*/
+
+    .card-text {
+        display: none;
+    }
+
+    /*-------------------RESPONSIVE FÜR HOME------------------------------------*/
+    .index-text {
+        font-size: 18px;
+    }
+
+    .index-text-newscenter{
+        display: block;
+        font-size: 18px;
+    }
+
+    /*---------------------------------------RESPONSIVE FÜR ÜBER UNS---------------------------------------*/
+    .about-text {
+        font-size: 18px;
+    }
+    .about-customer{
+        font-size: 18px;
+    }
+
+    /*---------------------------------------RESPONSIVE FÜR PROJEKTE---------------------------------------*/
+    .project-text {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+
+    .project-card {
+        min-width: 50%;
+        max-width: 92%; /* Verhindert, dass die Karte über den Container hinausragt */
+        width: 96%; /* Karte nimmt die volle Breite des Containers ein */
+        margin-bottom: 25px; /* Fügt unten einen Abstand hinzu */
+        box-sizing: border-box; /* Inkludiert Padding und Border in der Breite und Höhe */
+    }
+
+    .project-card-img {
+        width: calc(100% + 30px); /* Bild nimmt die volle Breite des Containers ein */
+        height: 100%; /* Automatische Höhe basierend auf dem Bildverhältnis */
+        max-height: 225px;
+        display: block; /* Entfernt Lücken unter dem Bild */
+        margin: 0 auto;
+        border-radius: inherit;
+    }
+    .project-card-container {
+        height: 100%;
+        max-height: 225px;
+    }
+
+    /*----------------------------------RESPONSIVE FÜR TEAM---------------------------------------*/
+
+
+    .team-partner-card {
+        width: 92%; /* Karten nehmen die volle Breite ein */
+        margin: auto;
+        display: flex; /* Flexbox für Layout */
+        align-items: stretch; /* Gleiche Höhe für alle Kinder */
+        box-sizing: border-box; /* Beinhaltet Padding und Border in der Breite */
+        margin-bottom: 20px;
+        margin-left: 2%;
+        margin-right: 2%;
+
+    }
+
+    .team-partner-card-img {
+        width: 100%; /* Vergrößerte Bildbreite */
+        max-width: 200px; /* Maximale Bildbreite für mehr Kontrolle */
+        height: 100%; /* Automatische Höhe basierend auf dem Bildverhältnis */
+        max-height: 200px;
+    }
+
+    .team-text {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .card-title-team{
+        padding-top: 40px;
+        word-break: break-word;
+    }
+    .card-text-a{
+        word-break: break-word;
+        display: none;
+    }
+    .card-text2-a{
+        word-break: break-word;
+        display: block;
+    }
+    .PositionOfLinkedinIcon {
+        word-break: break-word;
+        display: none;
+    }
+    .PositionOfLinkedinIcon2 {
+        word-break: break-word;
+        display: block;
+    }
+    /*-------------------RESPONSIVE FÜR PARTNER------------------------------------*/
+    .partner-text {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .partner-text{
+        width: 96%;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+
+
+    /*---------------------------------------RESPONSIVE FÜR KONTAKT---------------------------------------*/
+    .contact-text {
+        font-size: 18px;
+        margin-bottom: 25px;
+    }
+
+    nobr {
+        display: none;
+    }
+    .google-maps-card {
+        width: 96%;
+        display: flex;
+        float: left;
+        height: 30vh;
+        border: 0;
+        overflow: hidden;
+        margin-bottom: 30px;
+    }
+    .google-maps-card iframe {
+        width: 50%;
+        height: 50vh;
+        border: 0;
+    }
+
+    .contact-form {
+        width: 96%;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+        overflow: hidden;
+        font-size: 14px;
+        height: 30vh;
+        text-align: center;
+        vertical-align: center;
+        margin-bottom: 100px;
+    }
+    .contact-form label {
+        font-weight: bold;
+        padding: 0;
+        text-align: center;
+        vertical-align: center;
+    }
+
+    .contact-form input {
+        width: 94%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        vertical-align: center;
+    }
+
+    .contact-form button {
+        padding: 10px;
+        background-color: darkslategrey;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    .contact-form button:hover {
+        background-color: #45a049;
+    }
+    main {
+        flex: 1;
+    }
+    .google-maps-card2 {
+        display: block;
+        width: 96%; /* 90% Breite der Karte */
+        margin-left: 4%; /* 6% Abstand links */
+        margin-right: 2%; /* 2% Abstand rechts */
+    }
+}
+
+
+@media screen and (max-width: 400px), (max-height: 700px) {
+    /*-------------------BODY HEADER MAIN FOOTER------------------------------------*/
+    .modal-content {
+        height: 600px;
+        max-width: 200px;
+    }
+    .FooterModalSubtitle {
+        word-break: break-all;
+    }
+    .FooterModalText {
+        word-break: break-word;
+    }
+    .menu-toggle {
+        margin-right: 2%;
+    }
+    /*---------------------------------------ÜBERSCHRIFTEN---------------------------------------*/
+    h1 {
+        font-size: 20px !important;
+        font-weight: bold !important;
+        margin-bottom: 5px !important;
+    }
+
+    /*---------------------------------------DIE FRAMES---------------------------------------*/
+    .framesidelinks {
+        width: 0;
+        display: none;
+    }
+
+    .framecenter {
+        width: 100%;
+    }
+
+    .framesiderechts {
+        width: 0;
+        display: none;
+    }
+
+    /*-------------------BODY HEADER MAIN FOOTER------------------------------------*/
+
+    .Footer4SocialMediaSmallViewNoText {
+        position: absolute;
+        right: 10%;
+        top: 5px;
+        display: flex;
+        flex-direction: column; /* Places content in a vertical stack */
+        align-items: flex-end; /* Aligns content to the right */
+        color: white;
+        margin-left: -10px !important;
+    }
+
+    .Footer4SocialMediaSmallViewNoText p {
+        margin: 0 30px 20px 0; /* Adds spacing below the "Folgen Sie uns" text */
+        font-size: 14px; /* Adjust the font size as needed */
+        display: block;
+    }
+
+    .Footer4SocialMediaSmallViewNoText a {
+        display: flex;
+        align-items: center;
+        color: white; /* Ensures link text is white */
+        text-decoration: none; /* Removes underline */
+    }
+
+    .Footer4SocialMediaSmallViewNoText img {
+        margin-right: -10px; /* Adds space between the image and text */
+        margin-left: -15%;
+        display: block;
+    }
+
+    .Footer4SocialMediaSmallViewNoText a:hover {
+        text-decoration: none; /* No underline on hover */
+        display: block;
+    }
+
+    .Footer4SocialMediaSmallView {
+        display: none;
+    }
+
+    .Footer4SocialMediaSmallView p {
+        display: none;
+    }
+
+    .Footer4SocialMediaSmallView a {
+        display: none;
+    }
+
+    .Footer4SocialMediaSmallView img {
+        display: none;
+    }
+
+    .Footer4SocialMediaSmallView a:hover {
+        display: none;
+    }
+
+    .Footer4SocialMediaSmallView span {
+        display: none;
+    }
+    /*---------------------------------------ÜBERSCHRIFTEN---------------------------------------*/
+
+
+
+    /*----------------------------------CONTAINER UND SONSTIGE DUPLIKATE---------------------------------------*/
+
+    .m2-news-container {
+        border: 1px dotted darkslategrey;
+        border-radius: 20px;
+        display: block;
+        margin-bottom: 40px;
+    }
+
+    .m2-news-container {
+        border: none;
+        font-size: 16px;
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .m2-body {
+        margin-left: calc((100% - (4 * 250px) - (2 * 100px)) / 2);
+        font-size: 22px;
+        overflow-x: hidden;
+    }
+
+    .m2-text-white {
+        color: white;
+    }
+
+    .m2-nav-button-body {
+        margin: 0;
+        margin-right: 15px;
+        width: 175px;
+        height: 100px;
+        font-size: larger;
+    }
+
+    .m2-nav-icon-body {
+        height: 60px;
+    }
+
+    a.no-link {
+        text-decoration: none;
+        color: inherit;
+        cursor: text; /* Optional: Ändert den Cursor zu Text */
+    }
+
+    .bodylayout {
+        display: flex;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    .m2-header-icon {
+        max-height: 40px;
+        max-width: 40px;
+    }
+
+    .not-flex {
+        display: block; /* Oder inline-block, grid, etc. */
+        width: 20%; /* Beispielhaft, um den Blockcharakter zu verdeutlichen */
+    }
+
+    .m2-shift-down {
+        margin-top: 100px;
+    }
+
+    .m2-cols {
+        column-count: 3;
+        column-gap: 40px;
+        column-rule: 2px dotted lightgray;
+        column-fill: auto;
+    }
+
+    .m2-content-container {
+        padding: 20px;
+    }
+
+    .m2-content-main {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .m2-team-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px;
+    }
+
+    /*name und text ganz zu oberst*/
+
+    .card-title {
+        margin: 0;
+        font-size: 14px;
+        margin-right: 50px;
+        word-break: break-word;
+    }
+
+    .card-text {
+        display: none;
+    }
+
+    .m2-team-partner-card-section {
+        margin-left: 7%;
+    }
+    .dropdown-link {
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        margin: 15px 0;
+        display: block;
+    }
+    .w3-button {
+        font-size: 18px;
+    }
+    .dropdown-menu {
+        width: 80%;
+        margin-right: 20%;
+    }
+    /*-------------------------------------Für Home(Index)------------------------------*/
+    .project-card {
+        min-width: 50%;
+        max-width: 92%; /* Verhindert, dass die Karte über den Container hinausragt */
+        width: 100%; /* Karte nimmt die volle Breite des Containers ein */
+        margin-bottom: 25px; /* Fügt unten einen Abstand hinzu */
+        box-sizing: border-box; /* Inkludiert Padding und Border in der Breite und Höhe */
+    }
+    .index-text {
+        font-size: 16px;
+    }
+    .index-customer {
+        font-weight: bold;
+        font-size: larger;
+    }
+
+
+
+    .index-text-news {
+        display: none;
+    }
+
+    .index-text-newscenter {
+        display: block;
+        font-size: 18px;
+    }
+
+    /*---------------------------Für Über uns(About)---------------------------------------*/
+
+    .about-customer {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .about-text {
+        font-size: 18px;
+    }
+
+    /*---------------------------------------Für Projekte(Project)---------------------------------------*/
+
+    .project-text {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    /*---------------------------------------Für Team (Webpage)---------------------------------------*/
+    .team-partner-card {
+        /* width: 100%; Karten nehmen die volle Breite ein */
+        width: 84%;
+        /* margin: auto; */
+        margin-bottom: 10px;
+
+        display: flex; /* Flexbox für Layout */
+        align-items: stretch; /* Gleiche Höhe für alle Kinder */
+        box-sizing: border-box; /* Beinhaltet Padding und Border in der Breite */
+        margin-left: 1%;
+        margin-right: 8%;
+    }
+
+    .team-partner-card-img {
+        width: 100%; /* Vergrößerte Bildbreite */
+        max-width: 150px; /* Maximale Bildbreite für mehr Kontrolle */
+        height: 100%; /* Automatische Höhe basierend auf dem Bildverhältnis */
+        max-height: 150px;
+    }
+
+    .team-text {
+        font-size: 18px;
+    }
+
+    .card-title-team{
+        padding-top: 0;
+        word-break: break-word;
+    }
+    .card-text-a{
+        word-break: break-word;
+        display: none;
+    }
+    .PositionOfLinkedinIcon {
+        word-break: break-word;
+        display: none;
+    }
+    .PositionOfLinkedinIcon2 {
+        word-break: break-word;
+        display: block;
+    }
+
+    /*---------------------------------------Für Partner(Partner)---------------------------------------*/
+
+
+
+
+    .partner-text {
+        width: 96%;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    /*---------------------------------------Für Kontakt(Contact)---------------------------------------*/
+
+    .contact-text {
+        font-size: 18px;
+        margin-bottom: 100px;
+    }
+    nobr {
+        display: none;
+    }
+    /*Fürs Kontaktformular*/
+
+    .google-maps-card {
+        width: 95%;
+        display: flex;
+        float: left;
+        height: 35vh;
+        border: 0;
+        overflow: hidden;
+        margin-bottom: 30px;
+    }
+
+    .contact-form {
+        width: 96%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        padding: 3px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+        overflow: hidden;
+        font-size: 16px;
+        height: 35vh;
+        text-align: center;
+        vertical-align: center;
+        margin-bottom: 0;
+    }
+
+    .contact-form label {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .contact-form input {
+        width: 90%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: auto;
+    }
+
+    .contact-form button {
+        padding: 8px;
+        background-color: darkslategrey;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .contact-form button:hover {
+        background-color: #45a049;
+    }
+}

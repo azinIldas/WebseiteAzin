@@ -1,0 +1,79 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.pages {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.page {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    bottom: -100%;
+    transition: transform 0.8s ease, bottom 0.8s ease;
+    overflow-y: auto;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.page:first-child {
+    bottom: 0;
+}
+
+.first {
+    background-color: #dc322f;
+}
+
+.second {
+    background-color: #073642;
+}
+
+.third {
+    background-color: #cb4b16;
+}
+.fourt{
+    background-color: #00bcd4;
+}
+.fifth{
+    background-color: #4CAF50;
+}
+.sixth{
+    background-color: #673ab7;
+}
+
+.pagination {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+}
+
+.pagination>li {
+    list-style: none;
+    height: 20px;
+    width: 20px;
+    background: #000000;
+    border-radius: 50%;
+    margin-top: 10px;
+    transition: background .7s;
+}
+
+.pagination>li.active {
+    background: #ffffff;
+}
